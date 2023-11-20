@@ -3,7 +3,7 @@ Repository to test concepts around "Passwordless" movement with FIDO2, Passkeys 
 
 _**Note:** this demo is based on [another demo by duo labs](https://github.com/duo-labs/duo-blog-going-passwordless-with-py-webauthn). [Blog post](https://duo.com/blog/going-passwordless-with-py-webauthn)._
 
-## Required software for running locally
+## Required software (and others) for running locally
 - [Python 3.11+](https://www.python.org/downloads/)
 - Windows only: [Microsoft Build Tools for Visual Studio 2022](https://aka.ms/vs/17/release/vs_BuildTools.exe)
   - Or [MinGW](http://www.mingw.org/) (for building the [CFFI](https://cffi.readthedocs.io/en/latest/installation.html) dependency)
@@ -19,6 +19,7 @@ _**Note:** this demo is based on [another demo by duo labs](https://github.com/d
 ### Optional
 
 - [Docker](https://docs.docker.com/engine/install/) (for running the [Dockerfile](Dockerfile))
+- A Google Account in the case of running with [Google colaboratory](https://colab.research.google.com/).
 
 ## Getting Started running locally
 
@@ -78,8 +79,20 @@ _**Note:** this demo is based on [another demo by duo labs](https://github.com/d
     docker run -p 5000:5000 passwordless
     ```
 
-## Running on Google Colab
+### Running on Google Colab
 
+Go ahead and try it out on Google Colab by clicking the badge below:
+
+<a target="_blank" href="https://colab.research.google.com/github/piraces/passwordless/blob/main/assets/Passwordless_Demo.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+Make sure you have an active Google Account for this.
+
+Google Colab is a free Jupyter notebook environment that requires no setup and runs entirely in the cloud.
+It also allows you to run a local server with a proxy and a public URL to access it.
+
+You can modify source code directly in the browser and run it in the cloud.
 
 ## References
 
