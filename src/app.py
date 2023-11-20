@@ -1,6 +1,7 @@
-from typing import Dict
 import json
+import os
 
+from typing import Dict
 from flask import Flask, render_template, request
 from webauthn import (
     generate_registration_options,
@@ -30,11 +31,11 @@ TEMPLATES_AUTO_RELOAD = True
 #
 ################
 
-rp_id = "localhost"
-origin = "http://localhost:5000"
-rp_name = "Sample RP"
-user_id = "some_random_user_identifier_like_a_uuid"
-username = f"your.name@{rp_id}"
+rp_id = os.environ.get("RP_ID", "localhost")
+origin = os.environ.get("RP_ORIGIN", "http://localhost:5000")
+rp_name = os.environ.get("RP_NAME", "Sample RP")
+user_id = os.environ.get("RP_USER_ID", "some_random_user_identifier_like_a_uuid")
+username = os.environ.get("RP_USERNAME", f"your.name@{rp_id}")
 print(f"User ID: {user_id}")
 print(f"Username: {username}")
 
