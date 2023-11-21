@@ -15,11 +15,13 @@ from webauthn.helpers.structs import (
     UserVerificationRequirement,
     RegistrationCredential,
     AuthenticationCredential,
+    AttestationConveyancePreference,
+    AuthenticatorAttachment,
+    ResidentKeyRequirement,
 )
 from webauthn.helpers.cose import COSEAlgorithmIdentifier
 
 from .models import Credential, UserAccount
-
 
 # Create our Flask app
 app = Flask(__name__)
@@ -96,8 +98,12 @@ def handler_generate_registration_options():
             {"id": cred.id, "transports": cred.transports, "type": "public-key"}
             for cred in user.credentials
         ],
+        attestation=AttestationConveyancePreference.NONE,  # Try to change!
         authenticator_selection=AuthenticatorSelectionCriteria(
-            user_verification=UserVerificationRequirement.REQUIRED
+            authenticator_attachment=AuthenticatorAttachment.CROSS_PLATFORM,  # Try to change!
+            resident_key=ResidentKeyRequirement.PREFERRED,  # Try to change!
+            require_resident_key=False,  # Try to change!
+            user_verification=UserVerificationRequirement.REQUIRED  # Try to change!
         ),
         supported_pub_key_algs=[
             COSEAlgorithmIdentifier.ECDSA_SHA_256,
@@ -162,7 +168,7 @@ def handler_generate_authentication_options():
             {"type": "public-key", "id": cred.id, "transports": cred.transports}
             for cred in user.credentials
         ],
-        user_verification=UserVerificationRequirement.REQUIRED,
+        user_verification=UserVerificationRequirement.REQUIRED,  # Try to change!
     )
 
     current_authentication_challenge = options.challenge
